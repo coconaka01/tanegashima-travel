@@ -3,74 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>種子島インスタ映えトラベルガイド</title>
+<title>種子島トラベルガイド</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 body{
 margin:0;
 font-family:'Noto Sans JP',sans-serif;
-background:linear-gradient(to bottom,#e0f7ff,#ffffff);
+background:#f4fbff;
 color:#333;
 }
 
 header{
-background:linear-gradient(120deg,#00c6ff,#0072ff);
+background:linear-gradient(135deg,#7fdfff,#4db8ff);
 color:white;
+padding:60px 20px 40px;
 text-align:center;
-padding:60px 20px;
+border-bottom-left-radius:40px;
+border-bottom-right-radius:40px;
 }
 
 header h1{
-font-size:2.2em;
-margin-bottom:10px;
+margin:0;
+font-size:1.8em;
 }
 
-section{
-padding:40px 20px;
-max-width:1000px;
-margin:auto;
+header p{
+opacity:0.9;
+margin-top:10px;
 }
 
-h2{
-border-left:6px solid #0072ff;
-padding-left:10px;
-margin-bottom:30px;
+.section{
+padding:30px 18px;
+}
+
+.area-title{
+font-size:1.2em;
+font-weight:700;
+margin-bottom:15px;
+color:#4db8ff;
 }
 
 .card{
 background:white;
-border-radius:15px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-margin-bottom:30px;
-padding:20px;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
+border-radius:20px;
+padding:18px;
+margin-bottom:20px;
+box-shadow:0 6px 18px rgba(0,0,0,0.08);
 }
 
 .card h3{
 margin-top:0;
-color:#0072ff;
+font-size:1.05em;
+color:#333;
+}
+
+.card p{
+font-size:0.9em;
+color:#666;
 }
 
 iframe{
 width:100%;
-height:250px;
-border-radius:12px;
-margin-top:15px;
+height:200px;
 border:none;
+border-radius:15px;
+margin-top:10px;
 }
 
 footer{
 text-align:center;
 padding:30px;
-background:#0072ff;
-color:white;
-margin-top:50px;
+font-size:0.8em;
+color:#888;
 }
 </style>
 </head>
@@ -78,90 +84,85 @@ margin-top:50px;
 <body>
 
 <header>
-<h1>🌴 種子島インスタ映えトラベルガイド 🌊</h1>
-<p>エリア別 観光スポット＆グルメ完全版</p>
+<h1>🌴 種子島トラベルガイド</h1>
+<p>エリア別 観光スポット & グルメ</p>
 </header>
 
-<!-- 南種子エリア -->
-<section>
-<h2>📍 南種子エリア</h2>
+<div class="section">
+<div class="area-title">📍 南種子エリア</div>
 
 <div class="card">
 <h3>🚀 種子島宇宙センター</h3>
-<p>ロケット発射場見学ができる日本最大級の宇宙施設。</p>
+<p>ロケット発射場を見学できる宇宙施設。</p>
 <iframe src="https://www.google.com/maps?q=種子島宇宙センター&output=embed"></iframe>
 </div>
 
 <div class="card">
 <h3>🏖 千座の岩屋</h3>
-<p>干潮時に現れる絶景洞窟。写真映えNo.1スポット。</p>
+<p>干潮時だけ現れる神秘的な洞窟。</p>
 <iframe src="https://www.google.com/maps?q=千座の岩屋&output=embed"></iframe>
 </div>
 
 <div class="card">
 <h3>🍽 味処 井元</h3>
-<p>地元魚介を使った定食が人気。</p>
+<p>地元魚介を使った人気定食。</p>
 <iframe src="https://www.google.com/maps?q=味処井元 種子島&output=embed"></iframe>
 </div>
 
 <div class="card">
 <h3>☕ カフェ風の街</h3>
-<p>海を眺めながらゆったりできるおしゃれカフェ。</p>
+<p>海が見える落ち着いたカフェ。</p>
 <iframe src="https://www.google.com/maps?q=カフェ風の街 種子島&output=embed"></iframe>
 </div>
 
 <div class="card">
 <h3>🏝 前之浜海浜公園</h3>
-<p>白砂ビーチが広がる絶景スポット。</p>
+<p>白砂が美しい絶景ビーチ。</p>
 <iframe src="https://www.google.com/maps?q=前之浜海浜公園 種子島&output=embed"></iframe>
 </div>
+</div>
 
-</section>
-
-<!-- 中種子エリア -->
-<section>
-<h2>📍 中種子エリア</h2>
+<div class="section">
+<div class="area-title">📍 中種子エリア</div>
 
 <div class="card">
 <h3>🌊 浦田海水浴場</h3>
-<p>エメラルドグリーンの海が美しいビーチ。</p>
+<p>透明度抜群の人気ビーチ。</p>
 <iframe src="https://www.google.com/maps?q=浦田海水浴場 種子島&output=embed"></iframe>
 </div>
 
 <div class="card">
 <h3>🍣 すし若潮</h3>
-<p>地魚を使った絶品寿司。</p>
+<p>地魚が美味しい寿司店。</p>
 <iframe src="https://www.google.com/maps?q=すし若潮 種子島&output=embed"></iframe>
 </div>
 
 <div class="card">
 <h3>🍜 居酒屋なかむら</h3>
-<p>地元民おすすめの居酒屋。</p>
+<p>地元民おすすめ居酒屋。</p>
 <iframe src="https://www.google.com/maps?q=居酒屋なかむら 種子島&output=embed"></iframe>
 </div>
 
 <div class="card">
-<h3>🌴 宝満の池公園</h3>
+<h3>🌿 宝満の池公園</h3>
 <p>自然豊かな癒しスポット。</p>
 <iframe src="https://www.google.com/maps?q=宝満の池公園 種子島&output=embed"></iframe>
 </div>
 
 <div class="card">
-<h3>🍰 菓子工房ゆめ工房</h3>
-<p>種子島産素材を使ったスイーツ。</p>
+<h3>🍰 ゆめ工房</h3>
+<p>種子島素材のスイーツ。</p>
 <iframe src="https://www.google.com/maps?q=ゆめ工房 種子島&output=embed"></iframe>
 </div>
+</div>
 
-</section>
-
-<!-- 西之表エリア -->
-<section>
-<h2>📍 西之表エリア</h2>
+<div class="section">
+<div class="area-title">📍 西之表エリア</div>
 
 <div class="card">
-<h3>🏯 種子島開発総合センター（鉄砲館）</h3>
-<p>種子島と鉄砲伝来の歴史を学べる。</p>
-<iframe src="https://www.google.com/maps?q=種子島開発総合センター 鉄砲館&output=embed"></iframe>
+<h3>🏯 鉄砲館</h3>
+<p>鉄砲伝来の歴史を学べる施設。</p>
+<iframe src="https://www.google.com/maps?q=鉄砲館 種子島&output=embed"></iframe>
 </div>
 
 <div class="card">
@@ -172,26 +173,25 @@ margin-top:50px;
 
 <div class="card">
 <h3>🍴 レストランさくら</h3>
-<p>地元食材を使った洋食レストラン。</p>
+<p>地元食材を使った洋食。</p>
 <iframe src="https://www.google.com/maps?q=レストランさくら 種子島&output=embed"></iframe>
 </div>
 
 <div class="card">
 <h3>☕ 風の街カフェ</h3>
-<p>インスタ映えスイーツが人気。</p>
+<p>おしゃれスイーツが人気。</p>
 <iframe src="https://www.google.com/maps?q=風の街カフェ 種子島&output=embed"></iframe>
 </div>
 
 <div class="card">
 <h3>🏖 能野海水浴場</h3>
-<p>透明度抜群の静かなビーチ。</p>
+<p>静かで美しい穴場ビーチ。</p>
 <iframe src="https://www.google.com/maps?q=能野海水浴場 種子島&output=embed"></iframe>
 </div>
-
-</section>
+</div>
 
 <footer>
-© 2026 Tanegashima Travel Guide
+© Tanegashima Travel Guide
 </footer>
 
 </body>
