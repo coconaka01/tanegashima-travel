@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>種子島トラベルガイド</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<title>種子島 かわいい旅ガイド</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 body{
 margin:0;
-font-family:'Noto Sans JP',sans-serif;
-background:#f4fbff;
-color:#333;
+font-family:'Zen Maru Gothic',sans-serif;
+background:linear-gradient(#e8faff,#ffffff);
+color:#444;
 }
 
 header{
-background:linear-gradient(135deg,#7fdfff,#4db8ff);
-color:white;
-padding:60px 20px 40px;
+background:linear-gradient(135deg,#9be7ff,#6cc7ff);
+padding:70px 20px 50px;
 text-align:center;
-border-bottom-left-radius:40px;
-border-bottom-right-radius:40px;
+color:white;
+border-bottom-left-radius:50px;
+border-bottom-right-radius:50px;
+position:relative;
 }
 
 header h1{
@@ -29,54 +29,69 @@ margin:0;
 font-size:1.8em;
 }
 
-header p{
-opacity:0.9;
-margin-top:10px;
+.wave{
+position:absolute;
+bottom:-10px;
+left:0;
+width:100%;
+height:40px;
+background:url("https://svgshare.com/i/15wC.svg");
+background-size:cover;
 }
 
 .section{
-padding:30px 18px;
+padding:35px 18px;
 }
 
 .area-title{
-font-size:1.2em;
+font-size:1.3em;
 font-weight:700;
-margin-bottom:15px;
-color:#4db8ff;
+margin-bottom:18px;
+color:#5abfff;
 }
 
 .card{
 background:white;
-border-radius:20px;
+border-radius:25px;
 padding:18px;
-margin-bottom:20px;
-box-shadow:0 6px 18px rgba(0,0,0,0.08);
+margin-bottom:22px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
 .card h3{
-margin-top:0;
+margin:0 0 6px;
 font-size:1.05em;
-color:#333;
 }
 
 .card p{
 font-size:0.9em;
 color:#666;
+margin:0 0 10px;
 }
 
 iframe{
 width:100%;
-height:200px;
+height:180px;
 border:none;
-border-radius:15px;
-margin-top:10px;
+border-radius:18px;
+}
+
+.icon{
+font-size:1.2em;
+margin-right:6px;
+}
+
+.illust{
+text-align:center;
+font-size:2em;
+margin-bottom:15px;
 }
 
 footer{
 text-align:center;
 padding:30px;
 font-size:0.8em;
-color:#888;
+color:#999;
 }
 </style>
 </head>
@@ -84,114 +99,55 @@ color:#888;
 <body>
 
 <header>
-<h1>🌴 種子島トラベルガイド</h1>
-<p>エリア別 観光スポット & グルメ</p>
+<h1>🌴 種子島 旅ガイド</h1>
+<p>エリア別おすすめスポット</p>
+<div class="wave"></div>
 </header>
 
 <div class="section">
-<div class="area-title">📍 南種子エリア</div>
+<div class="illust">🌊🐚✨</div>
+<div class="area-title">📍 南種子</div>
 
-<div class="card">
-<h3>🚀 種子島宇宙センター</h3>
-<p>ロケット発射場を見学できる宇宙施設。</p>
-<iframe src="https://www.google.com/maps?q=種子島宇宙センター&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>🏖 千座の岩屋</h3>
-<p>干潮時だけ現れる神秘的な洞窟。</p>
-<iframe src="https://www.google.com/maps?q=千座の岩屋&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>🍽 味処 井元</h3>
-<p>地元魚介を使った人気定食。</p>
-<iframe src="https://www.google.com/maps?q=味処井元 種子島&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>☕ カフェ風の街</h3>
-<p>海が見える落ち着いたカフェ。</p>
-<iframe src="https://www.google.com/maps?q=カフェ風の街 種子島&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>🏝 前之浜海浜公園</h3>
-<p>白砂が美しい絶景ビーチ。</p>
-<iframe src="https://www.google.com/maps?q=前之浜海浜公園 種子島&output=embed"></iframe>
-</div>
+<div class="card"><h3>🚀 種子島宇宙センター</h3><p>ロケット見学スポット。</p><iframe src="https://www.google.com/maps?q=種子島宇宙センター&output=embed"></iframe></div>
+<div class="card"><h3>🏖 千座の岩屋</h3><p>干潮時だけ入れる洞窟。</p><iframe src="https://www.google.com/maps?q=千座の岩屋&output=embed"></iframe></div>
+<div class="card"><h3>🌅 前之浜海浜公園</h3><p>絶景サンセット。</p><iframe src="https://www.google.com/maps?q=前之浜海浜公園&output=embed"></iframe></div>
+<div class="card"><h3>🍴 味処井元</h3><p>地元海鮮定食。</p><iframe src="https://www.google.com/maps?q=味処井元 種子島&output=embed"></iframe></div>
+<div class="card"><h3>☕ カフェ風の街</h3><p>海が見えるカフェ。</p><iframe src="https://www.google.com/maps?q=カフェ風の街 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🍦 種子島ジェラートHOPE</h3><p>島素材ジェラート。</p><iframe src="https://www.google.com/maps?q=種子島ジェラートHOPE&output=embed"></iframe></div>
+<div class="card"><h3>🌴 広田遺跡ミュージアム</h3><p>歴史好きにおすすめ。</p><iframe src="https://www.google.com/maps?q=広田遺跡ミュージアム&output=embed"></iframe></div>
+<div class="card"><h3>🐢 竹崎海岸</h3><p>静かな穴場ビーチ。</p><iframe src="https://www.google.com/maps?q=竹崎海岸 種子島&output=embed"></iframe></div>
 </div>
 
 <div class="section">
-<div class="area-title">📍 中種子エリア</div>
+<div class="illust">🌺🍹🌴</div>
+<div class="area-title">📍 中種子</div>
 
-<div class="card">
-<h3>🌊 浦田海水浴場</h3>
-<p>透明度抜群の人気ビーチ。</p>
-<iframe src="https://www.google.com/maps?q=浦田海水浴場 種子島&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>🍣 すし若潮</h3>
-<p>地魚が美味しい寿司店。</p>
-<iframe src="https://www.google.com/maps?q=すし若潮 種子島&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>🍜 居酒屋なかむら</h3>
-<p>地元民おすすめ居酒屋。</p>
-<iframe src="https://www.google.com/maps?q=居酒屋なかむら 種子島&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>🌿 宝満の池公園</h3>
-<p>自然豊かな癒しスポット。</p>
-<iframe src="https://www.google.com/maps?q=宝満の池公園 種子島&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>🍰 ゆめ工房</h3>
-<p>種子島素材のスイーツ。</p>
-<iframe src="https://www.google.com/maps?q=ゆめ工房 種子島&output=embed"></iframe>
-</div>
+<div class="card"><h3>🌊 浦田海水浴場</h3><p>透明度抜群ビーチ。</p><iframe src="https://www.google.com/maps?q=浦田海水浴場&output=embed"></iframe></div>
+<div class="card"><h3>🍣 すし若潮</h3><p>人気寿司店。</p><iframe src="https://www.google.com/maps?q=すし若潮 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🍜 居酒屋なかむら</h3><p>地元民おすすめ。</p><iframe src="https://www.google.com/maps?q=居酒屋なかむら 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🌿 宝満の池公園</h3><p>自然散策スポット。</p><iframe src="https://www.google.com/maps?q=宝満の池公園&output=embed"></iframe></div>
+<div class="card"><h3>🍰 ゆめ工房</h3><p>島スイーツ。</p><iframe src="https://www.google.com/maps?q=ゆめ工房 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🍛 レストハウス川一</h3><p>地元定食が人気。</p><iframe src="https://www.google.com/maps?q=レストハウス川一 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🌻 中種子町立図書館周辺</h3><p>のんびり散歩。</p><iframe src="https://www.google.com/maps?q=中種子町立図書館&output=embed"></iframe></div>
+<div class="card"><h3>🍕 ピザ屋KAI</h3><p>石窯ピザ。</p><iframe src="https://www.google.com/maps?q=ピザ屋KAI 種子島&output=embed"></iframe></div>
 </div>
 
 <div class="section">
-<div class="area-title">📍 西之表エリア</div>
+<div class="illust">🌅🍹✨</div>
+<div class="area-title">📍 西之表</div>
 
-<div class="card">
-<h3>🏯 鉄砲館</h3>
-<p>鉄砲伝来の歴史を学べる施設。</p>
-<iframe src="https://www.google.com/maps?q=鉄砲館 種子島&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>🌅 あっぽ〜らんど</h3>
-<p>夕日が美しい絶景公園。</p>
-<iframe src="https://www.google.com/maps?q=あっぽ〜らんど 種子島&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>🍴 レストランさくら</h3>
-<p>地元食材を使った洋食。</p>
-<iframe src="https://www.google.com/maps?q=レストランさくら 種子島&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>☕ 風の街カフェ</h3>
-<p>おしゃれスイーツが人気。</p>
-<iframe src="https://www.google.com/maps?q=風の街カフェ 種子島&output=embed"></iframe>
-</div>
-
-<div class="card">
-<h3>🏖 能野海水浴場</h3>
-<p>静かで美しい穴場ビーチ。</p>
-<iframe src="https://www.google.com/maps?q=能野海水浴場 種子島&output=embed"></iframe>
-</div>
+<div class="card"><h3>🏯 鉄砲館</h3><p>鉄砲伝来の歴史。</p><iframe src="https://www.google.com/maps?q=鉄砲館 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🌇 あっぽ〜らんど</h3><p>夕日絶景公園。</p><iframe src="https://www.google.com/maps?q=あっぽ〜らんど&output=embed"></iframe></div>
+<div class="card"><h3>🍴 レストランさくら</h3><p>地元洋食。</p><iframe src="https://www.google.com/maps?q=レストランさくら 種子島&output=embed"></iframe></div>
+<div class="card"><h3>☕ 風の街カフェ</h3><p>おしゃれカフェ。</p><iframe src="https://www.google.com/maps?q=風の街カフェ 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🏖 能野海水浴場</h3><p>静かな穴場。</p><iframe src="https://www.google.com/maps?q=能野海水浴場&output=embed"></iframe></div>
+<div class="card"><h3>🍔 種子島バーガー</h3><p>ボリューム満点。</p><iframe src="https://www.google.com/maps?q=種子島バーガー&output=embed"></iframe></div>
+<div class="card"><h3>🌺 わかさ公園</h3><p>のんびりピクニック。</p><iframe src="https://www.google.com/maps?q=わかさ公園 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🍶 居酒屋島宿</h3><p>島料理が楽しめる。</p><iframe src="https://www.google.com/maps?q=居酒屋島宿 種子島&output=embed"></iframe></div>
 </div>
 
 <footer>
-© Tanegashima Travel Guide
+© Tanegashima Cute Travel Guide
 </footer>
 
 </body>
