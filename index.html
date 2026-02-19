@@ -3,162 +3,274 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>種子島 かわいい旅ガイド</title>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<title>Tanegashima Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
 body{
 margin:0;
-font-family:'Zen Maru Gothic',sans-serif;
-background:linear-gradient(#ffeefd,#e0f7ff);
-color:#444;
-scroll-behavior:smooth;
+font-family:'Noto Sans JP',sans-serif;
+background:#111;
+color:#fff;
 }
 
 header{
-background:linear-gradient(135deg,#ffb3ec,#8edbff);
-padding:70px 20px 60px;
+padding:60px 20px 30px;
 text-align:center;
-color:white;
-border-bottom-left-radius:50px;
-border-bottom-right-radius:50px;
+background:#000;
+border-bottom:1px solid #333;
 }
 
-header h1{margin:0;font-size:1.8em;}
-header p{margin-top:8px;font-size:0.95em;}
+header h1{
+margin:0;
+font-size:1.6em;
+letter-spacing:2px;
+}
+
+.search-box{
+padding:15px;
+background:#111;
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.search-box input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+background:#222;
+color:white;
+font-size:14px;
+}
+
+.filters{
+display:flex;
+overflow-x:auto;
+gap:10px;
+padding:10px 15px;
+background:#111;
+}
+
+.filters button{
+background:#222;
+border:none;
+color:#aaa;
+padding:8px 14px;
+border-radius:20px;
+font-size:12px;
+white-space:nowrap;
+}
+
+.filters button.active{
+background:white;
+color:black;
+font-weight:600;
+}
 
 .section{
 display:none;
-padding:30px 18px 90px;
+padding:20px 15px 100px;
 }
 
 .section.active{
 display:block;
-animation:fadeUp 0.8s ease;
+animation:fade 0.5s ease;
 }
 
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(20px);}
+@keyframes fade{
+from{opacity:0;transform:translateY(10px);}
 to{opacity:1;transform:translateY(0);}
 }
 
-.area-title{
-font-size:1.3em;
-font-weight:700;
-margin-bottom:18px;
-color:#ff70c8;
-}
-
 .card{
-background:white;
-border-radius:25px;
-padding:18px;
-margin-bottom:22px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
+background:#1a1a1a;
+border-radius:18px;
+padding:15px;
+margin-bottom:18px;
+border:1px solid #333;
 }
 
-.card h3{margin:0 0 6px;font-size:1.05em;}
-.card p{font-size:0.9em;color:#666;margin:0 0 10px;}
+.card h3{
+margin:0 0 6px;
+font-size:14px;
+}
+
+.card p{
+font-size:12px;
+color:#aaa;
+margin-bottom:10px;
+}
 
 iframe{
 width:100%;
-height:180px;
+height:160px;
 border:none;
-border-radius:18px;
+border-radius:14px;
+}
+
+.favorite{
+text-align:right;
+font-size:12px;
+cursor:pointer;
+color:#888;
 }
 
 .bottom-nav{
 position:fixed;
 bottom:0;
-left:0;
 width:100%;
-background:white;
 display:flex;
 justify-content:space-around;
+background:#000;
 padding:12px 0;
-box-shadow:0 -5px 20px rgba(0,0,0,0.1);
-border-top-left-radius:20px;
-border-top-right-radius:20px;
+border-top:1px solid #333;
 }
 
 .bottom-nav button{
 background:none;
 border:none;
-font-size:0.9em;
-font-family:'Zen Maru Gothic',sans-serif;
-color:#ff70c8;
-font-weight:700;
+color:#888;
+font-size:12px;
 }
 
 .bottom-nav button.active{
-color:#5ecbff;
+color:white;
+font-weight:600;
 }
 
-footer{
-text-align:center;
-padding:30px;
-font-size:0.8em;
-color:#999;
+.loader{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+letter-spacing:2px;
 }
 </style>
 </head>
-
 <body>
 
+<div class="loader" id="loader">LOADING...</div>
+
 <header>
-<h1>🌴 種子島 旅ガイド</h1>
-<p>エリアをタップして切り替え</p>
+<h1>TANEGASHIMA GUIDE</h1>
 </header>
 
-<!-- 南種子 -->
-<div id="minami" class="section active">
-<div class="area-title">📍 南種子</div>
-
-<div class="card"><h3>🚀 種子島宇宙センター</h3><p>ロケット見学スポット。</p><iframe src="https://www.google.com/maps?q=種子島宇宙センター&output=embed"></iframe></div>
-<div class="card"><h3>🏖 千座の岩屋</h3><p>干潮時だけ入れる洞窟。</p><iframe src="https://www.google.com/maps?q=千座の岩屋&output=embed"></iframe></div>
-<div class="card"><h3>🌅 前之浜海浜公園</h3><p>夕日絶景。</p><iframe src="https://www.google.com/maps?q=前之浜海浜公園&output=embed"></iframe></div>
-<div class="card"><h3>🍴 味処井元</h3><p>地元海鮮定食。</p><iframe src="https://www.google.com/maps?q=味処井元 種子島&output=embed"></iframe></div>
-<div class="card"><h3>☕ カフェ風の街</h3><p>海が見えるカフェ。</p><iframe src="https://www.google.com/maps?q=カフェ風の街 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🍦 ジェラートHOPE</h3><p>島素材ジェラート。</p><iframe src="https://www.google.com/maps?q=種子島ジェラートHOPE&output=embed"></iframe></div>
-<div class="card"><h3>🌴 広田遺跡ミュージアム</h3><p>歴史スポット。</p><iframe src="https://www.google.com/maps?q=広田遺跡ミュージアム&output=embed"></iframe></div>
-<div class="card"><h3>🐢 竹崎海岸</h3><p>穴場ビーチ。</p><iframe src="https://www.google.com/maps?q=竹崎海岸 種子島&output=embed"></iframe></div>
+<div class="search-box">
+<input type="text" id="search" placeholder="スポット検索...">
 </div>
 
-<!-- 中種子 -->
-<div id="naka" class="section">
-<div class="area-title">📍 中種子</div>
-
-<div class="card"><h3>🌊 浦田海水浴場</h3><p>透明度抜群。</p><iframe src="https://www.google.com/maps?q=浦田海水浴場&output=embed"></iframe></div>
-<div class="card"><h3>🍣 すし若潮</h3><p>人気寿司店。</p><iframe src="https://www.google.com/maps?q=すし若潮 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🍜 居酒屋なかむら</h3><p>地元民おすすめ。</p><iframe src="https://www.google.com/maps?q=居酒屋なかむら 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🌿 宝満の池公園</h3><p>自然散策。</p><iframe src="https://www.google.com/maps?q=宝満の池公園&output=embed"></iframe></div>
-<div class="card"><h3>🍰 ゆめ工房</h3><p>島スイーツ。</p><iframe src="https://www.google.com/maps?q=ゆめ工房 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🍛 レストハウス川一</h3><p>地元定食。</p><iframe src="https://www.google.com/maps?q=レストハウス川一 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🍕 ピザ屋KAI</h3><p>石窯ピザ。</p><iframe src="https://www.google.com/maps?q=ピザ屋KAI 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🌻 中種子町立図書館周辺</h3><p>のんびり散歩。</p><iframe src="https://www.google.com/maps?q=中種子町立図書館&output=embed"></iframe></div>
+<div class="filters">
+<button class="active" onclick="setFilter('all',this)">ALL</button>
+<button onclick="setFilter('観光',this)">観光</button>
+<button onclick="setFilter('カフェ',this)">カフェ</button>
+<button onclick="setFilter('グルメ',this)">グルメ</button>
+<button onclick="setFilter('海',this)">海</button>
+<button onclick="setFilter('歴史',this)">歴史</button>
 </div>
 
-<!-- 西之表 -->
-<div id="nishi" class="section">
-<div class="area-title">📍 西之表</div>
-
-<div class="card"><h3>🏯 鉄砲館</h3><p>歴史を学べる。</p><iframe src="https://www.google.com/maps?q=鉄砲館 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🌇 あっぽ〜らんど</h3><p>夕日公園。</p><iframe src="https://www.google.com/maps?q=あっぽ〜らんど&output=embed"></iframe></div>
-<div class="card"><h3>🍴 レストランさくら</h3><p>洋食店。</p><iframe src="https://www.google.com/maps?q=レストランさくら 種子島&output=embed"></iframe></div>
-<div class="card"><h3>☕ 風の街カフェ</h3><p>人気カフェ。</p><iframe src="https://www.google.com/maps?q=風の街カフェ 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🏖 能野海水浴場</h3><p>静かなビーチ。</p><iframe src="https://www.google.com/maps?q=能野海水浴場&output=embed"></iframe></div>
-<div class="card"><h3>🍔 種子島バーガー</h3><p>ボリューム満点。</p><iframe src="https://www.google.com/maps?q=種子島バーガー&output=embed"></iframe></div>
-<div class="card"><h3>🌺 わかさ公園</h3><p>ピクニック。</p><iframe src="https://www.google.com/maps?q=わかさ公園 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🍶 居酒屋島宿</h3><p>島料理。</p><iframe src="https://www.google.com/maps?q=居酒屋島宿 種子島&output=embed"></iframe></div>
-</div>
+<div id="minami" class="section active"></div>
+<div id="naka" class="section"></div>
+<div id="nishi" class="section"></div>
 
 <div class="bottom-nav">
 <button class="active" onclick="showSection('minami',this)">南種子</button>
 <button onclick="showSection('naka',this)">中種子</button>
 <button onclick="showSection('nishi',this)">西之表</button>
-</div>
+</div><script>
 
-<script>
+const spots = [
+
+/* ===== 南種子 ===== */
+{area:"minami",name:"種子島宇宙センター",type:"観光",desc:"ロケット見学施設",map:"種子島宇宙センター"},
+{area:"minami",name:"千座の岩屋",type:"観光",desc:"干潮時の洞窟",map:"千座の岩屋"},
+{area:"minami",name:"前之浜海浜公園",type:"海",desc:"夕日スポット",map:"前之浜海浜公園"},
+{area:"minami",name:"広田遺跡ミュージアム",type:"歴史",desc:"弥生遺跡",map:"広田遺跡ミュージアム"},
+{area:"minami",name:"竹崎海岸",type:"海",desc:"穴場ビーチ",map:"竹崎海岸 種子島"},
+{area:"minami",name:"味処井元",type:"グルメ",desc:"海鮮定食",map:"味処井元 種子島"},
+{area:"minami",name:"ジェラートHOPE",type:"カフェ",desc:"島素材ジェラート",map:"種子島ジェラートHOPE"},
+{area:"minami",name:"宇宙科学技術館",type:"観光",desc:"宇宙展示施設",map:"宇宙科学技術館 種子島"},
+{area:"minami",name:"島間港",type:"観光",desc:"のどかな港町",map:"島間港"},
+{area:"minami",name:"南種子町役場展望所",type:"観光",desc:"眺望スポット",map:"南種子町役場"},
+
+/* ===== 中種子 ===== */
+{area:"naka",name:"浦田海水浴場",type:"海",desc:"透明度抜群",map:"浦田海水浴場"},
+{area:"naka",name:"宝満の池公園",type:"観光",desc:"自然散策",map:"宝満の池公園"},
+{area:"naka",name:"中種子町立図書館",type:"観光",desc:"静かな休憩",map:"中種子町立図書館"},
+{area:"naka",name:"すし若潮",type:"グルメ",desc:"人気寿司店",map:"すし若潮 種子島"},
+{area:"naka",name:"居酒屋なかむら",type:"グルメ",desc:"地元居酒屋",map:"居酒屋なかむら 種子島"},
+{area:"naka",name:"ゆめ工房",type:"カフェ",desc:"島スイーツ",map:"ゆめ工房 種子島"},
+{area:"naka",name:"レストハウス川一",type:"グルメ",desc:"定食屋",map:"レストハウス川一 種子島"},
+{area:"naka",name:"ピザ屋KAI",type:"グルメ",desc:"石窯ピザ",map:"ピザ屋KAI 種子島"},
+{area:"naka",name:"種子島中央体育館",type:"観光",desc:"スポーツ施設",map:"種子島中央体育館"},
+{area:"naka",name:"長谷展望台",type:"観光",desc:"絶景スポット",map:"長谷展望台 種子島"},
+
+/* ===== 西之表 ===== */
+{area:"nishi",name:"鉄砲館",type:"歴史",desc:"鉄砲伝来資料館",map:"鉄砲館 種子島"},
+{area:"nishi",name:"あっぽ〜らんど",type:"観光",desc:"夕日公園",map:"あっぽ〜らんど"},
+{area:"nishi",name:"能野海水浴場",type:"海",desc:"静かなビーチ",map:"能野海水浴場"},
+{area:"nishi",name:"西之表港",type:"観光",desc:"フェリー港",map:"西之表港"},
+{area:"nishi",name:"レストランさくら",type:"グルメ",desc:"洋食店",map:"レストランさくら 種子島"},
+{area:"nishi",name:"風の街カフェ",type:"カフェ",desc:"人気カフェ",map:"風の街カフェ 種子島"},
+{area:"nishi",name:"種子島バーガー",type:"グルメ",desc:"ボリューム満点",map:"種子島バーガー"},
+{area:"nishi",name:"わかさ公園",type:"観光",desc:"ピクニック公園",map:"わかさ公園 種子島"},
+{area:"nishi",name:"居酒屋島宿",type:"グルメ",desc:"島料理",map:"居酒屋島宿 種子島"},
+{area:"nishi",name:"西之表市歴史民俗資料館",type:"歴史",desc:"郷土資料館",map:"西之表市歴史民俗資料館"}
+
+];
+
+
+/* ===== 描画処理 ===== */
+
+function render(){
+document.querySelectorAll(".section").forEach(sec=>sec.innerHTML="");
+
+const keyword = document.getElementById("search").value;
+const saved = JSON.parse(localStorage.getItem("fav")||"[]");
+
+spots.forEach(s=>{
+if(!s.name.includes(keyword)) return;
+if(currentFilter!="all" && s.type!=currentFilter) return;
+
+const favActive = saved.includes(s.name);
+
+const card = `
+<div class="card">
+<div class="favorite" onclick="toggleFav('${s.name}')">
+${favActive ? "★ お気に入り" : "☆ お気に入り"}
+</div>
+<h3>${s.name}</h3>
+<p>${s.desc}｜${s.type}</p>
+<iframe src="https://www.google.com/maps?q=${s.map}&output=embed"></iframe>
+</div>
+`;
+
+document.getElementById(s.area).innerHTML += card;
+});
+}
+
+
+/* ===== フィルター ===== */
+
+let currentFilter="all";
+
+function setFilter(type,btn){
+currentFilter=type;
+document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+render();
+}
+
+
+/* ===== エリア切替 ===== */
+
 function showSection(id,btn){
 document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
@@ -166,6 +278,34 @@ document.getElementById(id).classList.add('active');
 document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
 btn.classList.add('active');
 }
+
+
+/* ===== お気に入り ===== */
+
+function toggleFav(name){
+let saved = JSON.parse(localStorage.getItem("fav")||"[]");
+if(saved.includes(name)){
+saved = saved.filter(n=>n!==name);
+}else{
+saved.push(name);
+}
+localStorage.setItem("fav",JSON.stringify(saved));
+render();
+}
+
+
+/* ===== 検索 ===== */
+
+document.getElementById("search").addEventListener("input",render);
+
+
+/* ===== ローディング ===== */
+
+window.onload=()=>{
+render();
+setTimeout(()=>document.getElementById("loader").style.display="none",600);
+};
+
 </script>
 
 </body>
