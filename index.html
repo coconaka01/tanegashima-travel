@@ -10,44 +10,43 @@
 body{
 margin:0;
 font-family:'Zen Maru Gothic',sans-serif;
-background:linear-gradient(#e8faff,#ffffff);
+background:linear-gradient(#ffeefd,#e0f7ff);
 color:#444;
+scroll-behavior:smooth;
 }
 
 header{
-background:linear-gradient(135deg,#9be7ff,#6cc7ff);
-padding:70px 20px 50px;
+background:linear-gradient(135deg,#ffb3ec,#8edbff);
+padding:70px 20px 60px;
 text-align:center;
 color:white;
 border-bottom-left-radius:50px;
 border-bottom-right-radius:50px;
-position:relative;
 }
 
-header h1{
-margin:0;
-font-size:1.8em;
-}
-
-.wave{
-position:absolute;
-bottom:-10px;
-left:0;
-width:100%;
-height:40px;
-background:url("https://svgshare.com/i/15wC.svg");
-background-size:cover;
-}
+header h1{margin:0;font-size:1.8em;}
+header p{margin-top:8px;font-size:0.95em;}
 
 .section{
-padding:35px 18px;
+display:none;
+padding:30px 18px 90px;
+}
+
+.section.active{
+display:block;
+animation:fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 .area-title{
 font-size:1.3em;
 font-weight:700;
 margin-bottom:18px;
-color:#5abfff;
+color:#ff70c8;
 }
 
 .card{
@@ -55,19 +54,11 @@ background:white;
 border-radius:25px;
 padding:18px;
 margin-bottom:22px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-.card h3{
-margin:0 0 6px;
-font-size:1.05em;
-}
-
-.card p{
-font-size:0.9em;
-color:#666;
-margin:0 0 10px;
-}
+.card h3{margin:0 0 6px;font-size:1.05em;}
+.card p{font-size:0.9em;color:#666;margin:0 0 10px;}
 
 iframe{
 width:100%;
@@ -76,15 +67,31 @@ border:none;
 border-radius:18px;
 }
 
-.icon{
-font-size:1.2em;
-margin-right:6px;
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:12px 0;
+box-shadow:0 -5px 20px rgba(0,0,0,0.1);
+border-top-left-radius:20px;
+border-top-right-radius:20px;
 }
 
-.illust{
-text-align:center;
-font-size:2em;
-margin-bottom:15px;
+.bottom-nav button{
+background:none;
+border:none;
+font-size:0.9em;
+font-family:'Zen Maru Gothic',sans-serif;
+color:#ff70c8;
+font-weight:700;
+}
+
+.bottom-nav button.active{
+color:#5ecbff;
 }
 
 footer{
@@ -100,55 +107,66 @@ color:#999;
 
 <header>
 <h1>🌴 種子島 旅ガイド</h1>
-<p>エリア別おすすめスポット</p>
-<div class="wave"></div>
+<p>エリアをタップして切り替え</p>
 </header>
 
-<div class="section">
-<div class="illust">🌊🐚✨</div>
+<!-- 南種子 -->
+<div id="minami" class="section active">
 <div class="area-title">📍 南種子</div>
 
 <div class="card"><h3>🚀 種子島宇宙センター</h3><p>ロケット見学スポット。</p><iframe src="https://www.google.com/maps?q=種子島宇宙センター&output=embed"></iframe></div>
 <div class="card"><h3>🏖 千座の岩屋</h3><p>干潮時だけ入れる洞窟。</p><iframe src="https://www.google.com/maps?q=千座の岩屋&output=embed"></iframe></div>
-<div class="card"><h3>🌅 前之浜海浜公園</h3><p>絶景サンセット。</p><iframe src="https://www.google.com/maps?q=前之浜海浜公園&output=embed"></iframe></div>
+<div class="card"><h3>🌅 前之浜海浜公園</h3><p>夕日絶景。</p><iframe src="https://www.google.com/maps?q=前之浜海浜公園&output=embed"></iframe></div>
 <div class="card"><h3>🍴 味処井元</h3><p>地元海鮮定食。</p><iframe src="https://www.google.com/maps?q=味処井元 種子島&output=embed"></iframe></div>
 <div class="card"><h3>☕ カフェ風の街</h3><p>海が見えるカフェ。</p><iframe src="https://www.google.com/maps?q=カフェ風の街 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🍦 種子島ジェラートHOPE</h3><p>島素材ジェラート。</p><iframe src="https://www.google.com/maps?q=種子島ジェラートHOPE&output=embed"></iframe></div>
-<div class="card"><h3>🌴 広田遺跡ミュージアム</h3><p>歴史好きにおすすめ。</p><iframe src="https://www.google.com/maps?q=広田遺跡ミュージアム&output=embed"></iframe></div>
-<div class="card"><h3>🐢 竹崎海岸</h3><p>静かな穴場ビーチ。</p><iframe src="https://www.google.com/maps?q=竹崎海岸 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🍦 ジェラートHOPE</h3><p>島素材ジェラート。</p><iframe src="https://www.google.com/maps?q=種子島ジェラートHOPE&output=embed"></iframe></div>
+<div class="card"><h3>🌴 広田遺跡ミュージアム</h3><p>歴史スポット。</p><iframe src="https://www.google.com/maps?q=広田遺跡ミュージアム&output=embed"></iframe></div>
+<div class="card"><h3>🐢 竹崎海岸</h3><p>穴場ビーチ。</p><iframe src="https://www.google.com/maps?q=竹崎海岸 種子島&output=embed"></iframe></div>
 </div>
 
-<div class="section">
-<div class="illust">🌺🍹🌴</div>
+<!-- 中種子 -->
+<div id="naka" class="section">
 <div class="area-title">📍 中種子</div>
 
-<div class="card"><h3>🌊 浦田海水浴場</h3><p>透明度抜群ビーチ。</p><iframe src="https://www.google.com/maps?q=浦田海水浴場&output=embed"></iframe></div>
+<div class="card"><h3>🌊 浦田海水浴場</h3><p>透明度抜群。</p><iframe src="https://www.google.com/maps?q=浦田海水浴場&output=embed"></iframe></div>
 <div class="card"><h3>🍣 すし若潮</h3><p>人気寿司店。</p><iframe src="https://www.google.com/maps?q=すし若潮 種子島&output=embed"></iframe></div>
 <div class="card"><h3>🍜 居酒屋なかむら</h3><p>地元民おすすめ。</p><iframe src="https://www.google.com/maps?q=居酒屋なかむら 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🌿 宝満の池公園</h3><p>自然散策スポット。</p><iframe src="https://www.google.com/maps?q=宝満の池公園&output=embed"></iframe></div>
+<div class="card"><h3>🌿 宝満の池公園</h3><p>自然散策。</p><iframe src="https://www.google.com/maps?q=宝満の池公園&output=embed"></iframe></div>
 <div class="card"><h3>🍰 ゆめ工房</h3><p>島スイーツ。</p><iframe src="https://www.google.com/maps?q=ゆめ工房 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🍛 レストハウス川一</h3><p>地元定食が人気。</p><iframe src="https://www.google.com/maps?q=レストハウス川一 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🌻 中種子町立図書館周辺</h3><p>のんびり散歩。</p><iframe src="https://www.google.com/maps?q=中種子町立図書館&output=embed"></iframe></div>
+<div class="card"><h3>🍛 レストハウス川一</h3><p>地元定食。</p><iframe src="https://www.google.com/maps?q=レストハウス川一 種子島&output=embed"></iframe></div>
 <div class="card"><h3>🍕 ピザ屋KAI</h3><p>石窯ピザ。</p><iframe src="https://www.google.com/maps?q=ピザ屋KAI 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🌻 中種子町立図書館周辺</h3><p>のんびり散歩。</p><iframe src="https://www.google.com/maps?q=中種子町立図書館&output=embed"></iframe></div>
 </div>
 
-<div class="section">
-<div class="illust">🌅🍹✨</div>
+<!-- 西之表 -->
+<div id="nishi" class="section">
 <div class="area-title">📍 西之表</div>
 
-<div class="card"><h3>🏯 鉄砲館</h3><p>鉄砲伝来の歴史。</p><iframe src="https://www.google.com/maps?q=鉄砲館 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🌇 あっぽ〜らんど</h3><p>夕日絶景公園。</p><iframe src="https://www.google.com/maps?q=あっぽ〜らんど&output=embed"></iframe></div>
-<div class="card"><h3>🍴 レストランさくら</h3><p>地元洋食。</p><iframe src="https://www.google.com/maps?q=レストランさくら 種子島&output=embed"></iframe></div>
-<div class="card"><h3>☕ 風の街カフェ</h3><p>おしゃれカフェ。</p><iframe src="https://www.google.com/maps?q=風の街カフェ 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🏖 能野海水浴場</h3><p>静かな穴場。</p><iframe src="https://www.google.com/maps?q=能野海水浴場&output=embed"></iframe></div>
+<div class="card"><h3>🏯 鉄砲館</h3><p>歴史を学べる。</p><iframe src="https://www.google.com/maps?q=鉄砲館 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🌇 あっぽ〜らんど</h3><p>夕日公園。</p><iframe src="https://www.google.com/maps?q=あっぽ〜らんど&output=embed"></iframe></div>
+<div class="card"><h3>🍴 レストランさくら</h3><p>洋食店。</p><iframe src="https://www.google.com/maps?q=レストランさくら 種子島&output=embed"></iframe></div>
+<div class="card"><h3>☕ 風の街カフェ</h3><p>人気カフェ。</p><iframe src="https://www.google.com/maps?q=風の街カフェ 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🏖 能野海水浴場</h3><p>静かなビーチ。</p><iframe src="https://www.google.com/maps?q=能野海水浴場&output=embed"></iframe></div>
 <div class="card"><h3>🍔 種子島バーガー</h3><p>ボリューム満点。</p><iframe src="https://www.google.com/maps?q=種子島バーガー&output=embed"></iframe></div>
-<div class="card"><h3>🌺 わかさ公園</h3><p>のんびりピクニック。</p><iframe src="https://www.google.com/maps?q=わかさ公園 種子島&output=embed"></iframe></div>
-<div class="card"><h3>🍶 居酒屋島宿</h3><p>島料理が楽しめる。</p><iframe src="https://www.google.com/maps?q=居酒屋島宿 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🌺 わかさ公園</h3><p>ピクニック。</p><iframe src="https://www.google.com/maps?q=わかさ公園 種子島&output=embed"></iframe></div>
+<div class="card"><h3>🍶 居酒屋島宿</h3><p>島料理。</p><iframe src="https://www.google.com/maps?q=居酒屋島宿 種子島&output=embed"></iframe></div>
 </div>
 
-<footer>
-© Tanegashima Cute Travel Guide
-</footer>
+<div class="bottom-nav">
+<button class="active" onclick="showSection('minami',this)">南種子</button>
+<button onclick="showSection('naka',this)">中種子</button>
+<button onclick="showSection('nishi',this)">西之表</button>
+</div>
+
+<script>
+function showSection(id,btn){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+
+document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+}
+</script>
 
 </body>
 </html>
