@@ -3,113 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanegashima Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<title>TANEGASHIMA</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 body{
 margin:0;
-font-family:'Noto Sans JP',sans-serif;
-background:linear-gradient(180deg,#1a1a1a,#0f0f0f);
-color:#f5f5f5;
+font-family:'Zen Maru Gothic',sans-serif;
+background:#0e0e0f;
+color:#f1f1f1;
 }
 
 header{
-padding:70px 20px 35px;
+padding:80px 20px 40px;
 text-align:center;
-background:#111;
-border-bottom:1px solid #2a2a2a;
 }
 
 header h1{
 margin:0;
-font-size:1.6em;
-letter-spacing:3px;
-font-weight:800;
+font-size:1.8em;
+letter-spacing:4px;
+font-weight:700;
 }
 
-.search-box{
-padding:15px;
-background:#111;
-position:sticky;
-top:0;
-z-index:10;
+.subtitle{
+margin-top:8px;
+font-size:12px;
+color:#aaa;
 }
 
-.search-box input{
+.search{
+padding:0 20px 20px;
+}
+
+.search input{
 width:100%;
-padding:14px;
-border-radius:25px;
-border:1px solid #333;
-background:#1c1c1c;
+padding:15px;
+border-radius:30px;
+border:none;
+background:#1a1a1c;
 color:white;
 font-size:14px;
 outline:none;
-transition:0.3s;
-}
-
-.search-box input:focus{
-border:1px solid #888;
-background:#222;
-}
-
-.filters{
-display:flex;
-overflow-x:auto;
-gap:10px;
-padding:12px 15px;
-background:#111;
-}
-
-.filters button{
-background:#1c1c1c;
-border:1px solid #333;
-color:#aaa;
-padding:8px 16px;
-border-radius:30px;
-font-size:12px;
-white-space:nowrap;
-transition:0.2s;
-}
-
-.filters button.active{
-background:#fff;
-color:#000;
-font-weight:600;
+box-shadow:inset 0 0 0 1px #2a2a2a;
 }
 
 .section{
-display:none;
-padding:25px 18px 110px;
-}
-
-.section.active{
-display:block;
-animation:fade 0.5s ease;
-}
-
-@keyframes fade{
-from{opacity:0;transform:translateY(15px);}
-to{opacity:1;transform:translateY(0);}
+padding:10px 20px 120px;
 }
 
 .card{
-background:linear-gradient(145deg,#1e1e1e,#151515);
-border-radius:28px;
-padding:18px;
-margin-bottom:22px;
-border:1px solid #2a2a2a;
-transition:0.3s;
+background:#161617;
+border-radius:30px;
+padding:20px;
+margin-bottom:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+transform:translateY(20px);
+opacity:0;
+transition:0.6s ease;
 }
 
-.card:hover{
-transform:scale(1.02);
+.card.show{
+transform:translateY(0);
+opacity:1;
 }
 
 .card h3{
-margin:0 0 6px;
-font-size:14px;
-font-weight:600;
+margin:0 0 8px;
+font-size:15px;
 }
 
 .card p{
@@ -122,33 +83,35 @@ iframe{
 width:100%;
 height:170px;
 border:none;
-border-radius:22px;
-margin-top:6px;
+border-radius:25px;
+margin-top:8px;
 }
 
 .favorite{
 text-align:right;
 font-size:12px;
+color:#888;
 cursor:pointer;
-color:#bbb;
-margin-bottom:6px;
-transition:0.2s;
 }
 
-.favorite:hover{
+.favorite.active{
 color:#fff;
+font-weight:700;
 }
 
 .bottom-nav{
 position:fixed;
-bottom:0;
-width:100%;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
+width:90%;
+background:rgba(25,25,27,0.8);
+backdrop-filter:blur(20px);
 display:flex;
 justify-content:space-around;
-background:#111;
 padding:14px 0;
-border-top:1px solid #2a2a2a;
-backdrop-filter:blur(10px);
+border-radius:40px;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
 
 .bottom-nav button{
@@ -156,180 +119,85 @@ background:none;
 border:none;
 color:#888;
 font-size:12px;
-transition:0.2s;
 }
 
 .bottom-nav button.active{
 color:#fff;
 font-weight:700;
 }
-
-.loader{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#111;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:13px;
-letter-spacing:3px;
-color:#888;
-}
 </style>
 </head>
 <body>
 
-<div class="loader" id="loader">LOADING...</div>
-
 <header>
-<h1>TANEGASHIMA GUIDE</h1>
+<h1>TANEGASHIMA</h1>
+<div class="subtitle">minimal travel guide</div>
 </header>
 
-<div class="search-box">
-<input type="text" id="search" placeholder="スポット検索...">
+<div class="search">
+<input type="text" id="search" placeholder="スポット検索">
 </div>
 
-<div class="filters">
-<button class="active" onclick="setFilter('all',this)">ALL</button>
-<button onclick="setFilter('観光',this)">観光</button>
-<button onclick="setFilter('カフェ',this)">カフェ</button>
-<button onclick="setFilter('グルメ',this)">グルメ</button>
-<button onclick="setFilter('海',this)">海</button>
-<button onclick="setFilter('歴史',this)">歴史</button>
-</div>
-
-<div id="minami" class="section active"></div>
-<div id="naka" class="section"></div>
-<div id="nishi" class="section"></div>
+<div id="content" class="section"></div>
 
 <div class="bottom-nav">
-<button class="active" onclick="showSection('minami',this)">南種子</button>
-<button onclick="showSection('naka',this)">中種子</button>
-<button onclick="showSection('nishi',this)">西之表</button>
-</div><script>
+<button class="active" onclick="setArea('minami',this)">南種子</button>
+<button onclick="setArea('naka',this)">中種子</button>
+<button onclick="setArea('nishi',this)">西之表</button>
+</div>
+
+<script>
+
+let currentArea="minami";
 
 const spots = [
-
-/* ===== 南種子 ===== */
-{area:"minami",name:"種子島宇宙センター",type:"観光",desc:"ロケット見学施設",map:"種子島宇宙センター"},
-{area:"minami",name:"千座の岩屋",type:"観光",desc:"干潮時の洞窟",map:"千座の岩屋"},
-{area:"minami",name:"前之浜海浜公園",type:"海",desc:"夕日スポット",map:"前之浜海浜公園"},
-{area:"minami",name:"広田遺跡ミュージアム",type:"歴史",desc:"弥生遺跡",map:"広田遺跡ミュージアム"},
-{area:"minami",name:"竹崎海岸",type:"海",desc:"穴場ビーチ",map:"竹崎海岸 種子島"},
-{area:"minami",name:"味処井元",type:"グルメ",desc:"海鮮定食",map:"味処井元 種子島"},
-{area:"minami",name:"ジェラートHOPE",type:"カフェ",desc:"島素材ジェラート",map:"種子島ジェラートHOPE"},
-{area:"minami",name:"宇宙科学技術館",type:"観光",desc:"宇宙展示施設",map:"宇宙科学技術館 種子島"},
-{area:"minami",name:"島間港",type:"観光",desc:"のどかな港町",map:"島間港"},
-{area:"minami",name:"南種子町役場展望所",type:"観光",desc:"眺望スポット",map:"南種子町役場"},
-
-/* ===== 中種子 ===== */
-{area:"naka",name:"浦田海水浴場",type:"海",desc:"透明度抜群",map:"浦田海水浴場"},
-{area:"naka",name:"宝満の池公園",type:"観光",desc:"自然散策",map:"宝満の池公園"},
-{area:"naka",name:"中種子町立図書館",type:"観光",desc:"静かな休憩",map:"中種子町立図書館"},
-{area:"naka",name:"すし若潮",type:"グルメ",desc:"人気寿司店",map:"すし若潮 種子島"},
-{area:"naka",name:"居酒屋なかむら",type:"グルメ",desc:"地元居酒屋",map:"居酒屋なかむら 種子島"},
-{area:"naka",name:"ゆめ工房",type:"カフェ",desc:"島スイーツ",map:"ゆめ工房 種子島"},
-{area:"naka",name:"レストハウス川一",type:"グルメ",desc:"定食屋",map:"レストハウス川一 種子島"},
-{area:"naka",name:"ピザ屋KAI",type:"グルメ",desc:"石窯ピザ",map:"ピザ屋KAI 種子島"},
-{area:"naka",name:"種子島中央体育館",type:"観光",desc:"スポーツ施設",map:"種子島中央体育館"},
-{area:"naka",name:"長谷展望台",type:"観光",desc:"絶景スポット",map:"長谷展望台 種子島"},
-
-/* ===== 西之表 ===== */
-{area:"nishi",name:"鉄砲館",type:"歴史",desc:"鉄砲伝来資料館",map:"鉄砲館 種子島"},
-{area:"nishi",name:"あっぽ〜らんど",type:"観光",desc:"夕日公園",map:"あっぽ〜らんど"},
-{area:"nishi",name:"能野海水浴場",type:"海",desc:"静かなビーチ",map:"能野海水浴場"},
-{area:"nishi",name:"西之表港",type:"観光",desc:"フェリー港",map:"西之表港"},
-{area:"nishi",name:"レストランさくら",type:"グルメ",desc:"洋食店",map:"レストランさくら 種子島"},
-{area:"nishi",name:"風の街カフェ",type:"カフェ",desc:"人気カフェ",map:"風の街カフェ 種子島"},
-{area:"nishi",name:"種子島バーガー",type:"グルメ",desc:"ボリューム満点",map:"種子島バーガー"},
-{area:"nishi",name:"わかさ公園",type:"観光",desc:"ピクニック公園",map:"わかさ公園 種子島"},
-{area:"nishi",name:"居酒屋島宿",type:"グルメ",desc:"島料理",map:"居酒屋島宿 種子島"},
-{area:"nishi",name:"西之表市歴史民俗資料館",type:"歴史",desc:"郷土資料館",map:"西之表市歴史民俗資料館"}
-
+{area:"minami",name:"種子島宇宙センター",desc:"ロケット見学施設",map:"種子島宇宙センター"},
+{area:"minami",name:"千座の岩屋",desc:"干潮時の洞窟",map:"千座の岩屋"},
+{area:"minami",name:"前之浜海浜公園",desc:"夕日スポット",map:"前之浜海浜公園"},
+{area:"naka",name:"浦田海水浴場",desc:"透明度抜群",map:"浦田海水浴場"},
+{area:"naka",name:"宝満の池公園",desc:"自然散策",map:"宝満の池公園"},
+{area:"nishi",name:"鉄砲館",desc:"歴史資料館",map:"鉄砲館 種子島"},
+{area:"nishi",name:"あっぽ〜らんど",desc:"夕日公園",map:"あっぽ〜らんど"}
 ];
 
-
-/* ===== 描画処理 ===== */
-
 function render(){
-document.querySelectorAll(".section").forEach(sec=>sec.innerHTML="");
+const container=document.getElementById("content");
+container.innerHTML="";
+const keyword=document.getElementById("search").value;
 
-const keyword = document.getElementById("search").value;
-const saved = JSON.parse(localStorage.getItem("fav")||"[]");
-
-spots.forEach(s=>{
-if(!s.name.includes(keyword)) return;
-if(currentFilter!="all" && s.type!=currentFilter) return;
-
-const favActive = saved.includes(s.name);
-
-const card = `
-<div class="card">
-<div class="favorite" onclick="toggleFav('${s.name}')">
-${favActive ? "★ お気に入り" : "☆ お気に入り"}
-</div>
+spots
+.filter(s=>s.area===currentArea)
+.filter(s=>s.name.includes(keyword))
+.forEach(s=>{
+const card=document.createElement("div");
+card.className="card";
+card.innerHTML=`
+<div class="favorite" onclick="toggleFav(this)">☆ お気に入り</div>
 <h3>${s.name}</h3>
-<p>${s.desc}｜${s.type}</p>
+<p>${s.desc}</p>
 <iframe src="https://www.google.com/maps?q=${s.map}&output=embed"></iframe>
-</div>
 `;
+container.appendChild(card);
 
-document.getElementById(s.area).innerHTML += card;
+setTimeout(()=>card.classList.add("show"),100);
 });
 }
 
-
-/* ===== フィルター ===== */
-
-let currentFilter="all";
-
-function setFilter(type,btn){
-currentFilter=type;
-document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
+function setArea(area,btn){
+currentArea=area;
+document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.remove("active"));
 btn.classList.add("active");
 render();
 }
 
-
-/* ===== エリア切替 ===== */
-
-function showSection(id,btn){
-document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-
-document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
+function toggleFav(el){
+el.classList.toggle("active");
+el.textContent=el.classList.contains("active")?"★ お気に入り":"☆ お気に入り";
 }
-
-
-/* ===== お気に入り ===== */
-
-function toggleFav(name){
-let saved = JSON.parse(localStorage.getItem("fav")||"[]");
-if(saved.includes(name)){
-saved = saved.filter(n=>n!==name);
-}else{
-saved.push(name);
-}
-localStorage.setItem("fav",JSON.stringify(saved));
-render();
-}
-
-
-/* ===== 検索 ===== */
 
 document.getElementById("search").addEventListener("input",render);
 
-
-/* ===== ローディング ===== */
-
-window.onload=()=>{
 render();
-setTimeout(()=>document.getElementById("loader").style.display="none",600);
-};
 
 </script>
 
