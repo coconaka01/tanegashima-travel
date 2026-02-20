@@ -174,9 +174,16 @@ function render(){
   .filter(s=>s.area===currentArea)
   .filter(s=>s.name.includes(keyword))
   .forEach(s=>{
+
+    let mark="";
+    if(s.area==="minami") mark="🚀 南種子";
+    if(s.area==="naka") mark="🌿 中種子";
+    if(s.area==="nishi") mark="⛩ 西之表";
+
     const card=document.createElement("div");
     card.className="card";
     card.innerHTML=`
+      <div class="area-tag">${mark}</div>
       <h3>${s.name}</h3>
       <p>${s.desc}</p>
       <a class="map-btn" target="_blank" href="${s.map}">Googleマップで見る</a>
