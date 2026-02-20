@@ -1,82 +1,73 @@
-　<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>種子島ガイド</title>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 body{
   margin:0;
   font-family:'Zen Maru Gothic',sans-serif;
-  background:#fdfcf8;
+  background:#f6f5f2;
   color:#333;
 }
+
 header{
   padding:60px 20px 30px;
   text-align:center;
 }
+
 header h1{
   margin:0;
   font-size:1.8em;
   letter-spacing:3px;
-  font-weight:700;
 }
+
 .subtitle{
-  margin-top:5px;
+  margin-top:6px;
   font-size:13px;
-  color:#555;
+  color:#666;
 }
-.search{
-  padding:0 20px 20px;
-}
-.search input{
-  width:100%;
-  padding:14px;
-  border-radius:25px;
-  border:1px solid #ccc;
-  outline:none;
-  font-size:14px;
-  box-shadow:inset 0 0 0 1px #ddd;
-  background:#fff;
-}
+
 .section{
   padding:10px 20px 120px;
 }
+
 .card{
   background:#fff;
-  border-radius:20px;
+  border-radius:22px;
   padding:18px;
-  margin-bottom:20px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.08);
-  transition:0.3s;
+  margin-bottom:22px;
+  box-shadow:0 6px 25px rgba(0,0,0,0.07);
 }
-.card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 25px rgba(0,0,0,0.12);
+
+.area-tag{
+  font-size:11px;
+  font-weight:600;
+  margin-bottom:6px;
+  color:#8aa1b1;
 }
+
 .card h3{
-  margin:0 0 8px;
-  font-size:16px;
+  margin:0 0 6px;
+  font-size:15px;
 }
+
 .card p{
   font-size:13px;
   color:#666;
   margin-bottom:10px;
 }
-.map-btn{
-  display:inline-block;
-  padding:6px 12px;
-  background:#8aa1b1;
-  color:#fff;
-  font-size:12px;
-  border-radius:15px;
-  text-decoration:none;
-  transition:0.2s;
+
+iframe{
+  width:100%;
+  height:180px;
+  border:none;
+  border-radius:18px;
 }
-.map-btn:hover{
-  background:#6f8495;
-}
+
 .bottom-nav{
   position:fixed;
   bottom:15px;
@@ -84,95 +75,90 @@ header h1{
   transform:translateX(-50%);
   width:90%;
   background:rgba(255,255,255,0.95);
-  backdrop-filter:blur(10px);
   display:flex;
   justify-content:space-around;
   padding:12px 0;
   border-radius:40px;
   box-shadow:0 4px 20px rgba(0,0,0,0.08);
 }
+
 .bottom-nav button{
   background:none;
   border:none;
   color:#777;
   font-size:13px;
-  font-weight:500;
-  transition:0.2s;
 }
+
 .bottom-nav button.active{
   color:#333;
   font-weight:700;
 }
 </style>
 </head>
+
 <body>
 
 <header>
-  <h1>種子島ガイド</h1>
-  <div class="subtitle">家族と一緒に楽しむ観光スポット＆グルメ</div>
+<h1>種子島ガイド</h1>
+<div class="subtitle">春の家族旅行におすすめスポット</div>
 </header>
-
-<div class="search">
-  <input type="text" id="search" placeholder="スポット検索">
-</div>
 
 <div id="content" class="section"></div>
 
 <div class="bottom-nav">
-  <button class="active" onclick="setArea('minami',this)">南種子</button>
-  <button onclick="setArea('naka',this)">中種子</button>
-  <button onclick="setArea('nishi',this)">西之表</button>
+<button class="active" onclick="setArea('minami',this)">南種子</button>
+<button onclick="setArea('naka',this)">中種子</button>
+<button onclick="setArea('nishi',this)">西之表</button>
 </div>
 
 <script>
+
 let currentArea="minami";
 
 const spots = [
+
 /* 南種子 */
-{area:"minami",name:"種子島宇宙センター",desc:"ロケット見学施設",map:"https://goo.gl/maps/2rj6b9Ft5r2Gqzqk8"},
-{area:"minami",name:"宇宙科学技術館",desc:"宇宙展示館",map:"https://goo.gl/maps/vq9LrZxzPaR2"},
-{area:"minami",name:"門倉岬",desc:"絶景の岬",map:"https://goo.gl/maps/3r9E2z9P3R62"},
-{area:"minami",name:"千座の岩屋",desc:"干潮時の岩屋",map:"https://goo.gl/maps/9yMKr3M5s4s"},
-{area:"minami",name:"広田遺跡",desc:"古代遺跡",map:"https://goo.gl/maps/Y1K3HgFnFvS2"},
-{area:"minami",name:"茎永のアコウ",desc:"巨大なアコウの木",map:"https://goo.gl/maps/8j4KfNdzTJS2"},
+{area:"minami",name:"種子島宇宙センター",desc:"ロケット打ち上げ施設・見学可能",map:"種子島宇宙センター"},
+{area:"minami",name:"宇宙科学技術館",desc:"宇宙展示ミュージアム",map:"宇宙科学技術館 種子島"},
+{area:"minami",name:"門倉岬",desc:"絶景の岬スポット",map:"門倉岬"},
+{area:"minami",name:"千座の岩屋",desc:"干潮時に現れる神秘的な岩屋",map:"千座の岩屋"},
+{area:"minami",name:"広田遺跡",desc:"古代遺跡見学",map:"広田遺跡"},
+{area:"minami",name:"茎永のアコウ",desc:"巨大なアコウの木",map:"茎永のアコウ"},
 
 /* 中種子 */
-{area:"naka",name:"増田宇宙通信所",desc:"通信施設見学",map:"https://goo.gl/maps/m5uJ9XerVZ92"},
-{area:"naka",name:"長谷公園",desc:"自然散策",map:"https://goo.gl/maps/pL9FsVj5rGJ2"},
-{area:"naka",name:"高坊山",desc:"展望スポット",map:"https://goo.gl/maps/tvH8WZLk9aD2"},
-{area:"naka",name:"犬城海岸",desc:"岩場の景観",map:"https://goo.gl/maps/2j3HkX4QeHS2"},
-{area:"naka",name:"雄龍・雌龍の岩",desc:"奇岩スポット",map:"https://goo.gl/maps/dg6XFtH1mQQ2"},
-{area:"naka",name:"宝満神社",desc:"歴史ある神社",map:"https://goo.gl/maps/1i5eXZq4eAS2"},
+{area:"naka",name:"増田宇宙通信所",desc:"宇宙通信施設",map:"増田宇宙通信所"},
+{area:"naka",name:"高坊山",desc:"展望スポット",map:"高坊山 種子島"},
+{area:"naka",name:"長谷公園",desc:"自然散策",map:"長谷公園 種子島"},
+{area:"naka",name:"犬城海岸",desc:"岩場の景観美",map:"犬城海岸"},
+{area:"naka",name:"雄龍・雌龍の岩",desc:"奇岩スポット",map:"雄龍 雌龍の岩"},
+{area:"naka",name:"宝満神社",desc:"歴史ある神社",map:"宝満神社 種子島"},
 
 /* 西之表 */
-{area:"nishi",name:"西之表港",desc:"港散策",map:"https://goo.gl/maps/q1yHjU2nW4k"},
-{area:"nishi",name:"鉄砲館",desc:"歴史資料館",map:"https://goo.gl/maps/jkF6pZkM1M62"},
-{area:"nishi",name:"月窓亭",desc:"歴史的建物",map:"https://goo.gl/maps/8i7YdF7K3YB2"},
-{area:"nishi",name:"あっぽ〜らんど",desc:"公園・夕日スポット",map:"https://goo.gl/maps/3j5Kk9pE4sT2"},
-{area:"nishi",name:"喜志鹿崎灯台",desc:"灯台と海の景色",map:"https://goo.gl/maps/7pM8ZkH5R6F2"},
-{area:"nishi",name:"住吉神社",desc:"歴史ある神社",map:"https://goo.gl/maps/4qH9dLkP3T32"},
-{area:"nishi",name:"国上神社",desc:"古くからの神社",map:"https://goo.gl/maps/6sR7YkL5S3F2"},
-{area:"nishi",name:"国上寺",desc:"お寺散策",map:"https://goo.gl/maps/5fN8HkJ7R8T2"},
-{area:"nishi",name:"能野海岸",desc:"景色散策向け",map:"https://goo.gl/maps/2dK6GmN7V1Q2"},
-{area:"nishi",name:"伊関海岸",desc:"景色スポット",map:"https://goo.gl/maps/9rM7FsT2J5P2"},
+{area:"nishi",name:"鉄砲館",desc:"種子島鉄砲の歴史資料館",map:"鉄砲館 種子島"},
+{area:"nishi",name:"月窓亭",desc:"歴史的建物見学",map:"月窓亭 種子島"},
+{area:"nishi",name:"あっぽ〜らんど",desc:"公園・夕日スポット",map:"あっぽ〜らんど"},
+{area:"nishi",name:"喜志鹿崎灯台",desc:"灯台と海の景色",map:"喜志鹿崎灯台"},
+{area:"nishi",name:"西之表港",desc:"港散策",map:"西之表港"},
+{area:"nishi",name:"住吉神社",desc:"歴史ある神社",map:"住吉神社 種子島"},
+{area:"nishi",name:"国上神社",desc:"古くからの神社",map:"国上神社 種子島"},
+{area:"nishi",name:"国上寺",desc:"静かな寺院",map:"国上寺 種子島"},
 
-/* グルメ例 */
-{area:"minami",name:"味処 井元",desc:"地元食材の定食",map:"https://goo.gl/maps/8QnP4t7j9yJ2"},
-{area:"minami",name:"寿司割烹 八千代",desc:"新鮮寿司",map:"https://goo.gl/maps/9yLQ8mJ2v3P2"},
-{area:"naka",name:"レストラン公園通り",desc:"ランチ・カフェ",map:"https://goo.gl/maps/3gF7Kj9tE6G2"},
-{area:"nishi",name:"天竜",desc:"和食料理",map:"https://goo.gl/maps/2hF9Kj5pR8T2"},
-{area:"nishi",name:"島宿HOPEカフェ",desc:"カフェと軽食",map:"https://goo.gl/maps/4gL7FkM1D9P2"},
-{area:"nishi",name:"お食事処 とおる",desc:"家庭的な料理",map:"https://goo.gl/maps/5pM8KjT3E2R2"}
+/* グルメ */
+{area:"minami",name:"味処 井元",desc:"地元食材の定食",map:"味処 井元 種子島"},
+{area:"minami",name:"寿司割烹 八千代",desc:"新鮮寿司",map:"寿司割烹 八千代 種子島"},
+{area:"naka",name:"レストラン公園通り",desc:"ランチ・カフェ",map:"レストラン公園通り 種子島"},
+{area:"nishi",name:"天竜",desc:"和食料理店",map:"天竜 種子島"},
+{area:"nishi",name:"島宿HOPEカフェ",desc:"おしゃれカフェ",map:"島宿HOPE 種子島"},
+{area:"nishi",name:"お食事処 とおる",desc:"家庭的な料理",map:"お食事処 とおる 種子島"}
+
 ];
 
 function render(){
   const container=document.getElementById("content");
   container.innerHTML="";
-  const keyword=document.getElementById("search").value;
 
   spots
   .filter(s=>s.area===currentArea)
-  .filter(s=>s.name.includes(keyword))
   .forEach(s=>{
 
     let mark="";
@@ -186,7 +172,7 @@ function render(){
       <div class="area-tag">${mark}</div>
       <h3>${s.name}</h3>
       <p>${s.desc}</p>
-      <a class="map-btn" target="_blank" href="${s.map}">Googleマップで見る</a>
+      <iframe src="https://www.google.com/maps?q=${s.map}&output=embed"></iframe>
     `;
     container.appendChild(card);
   });
@@ -199,9 +185,8 @@ function setArea(area,btn){
   render();
 }
 
-document.getElementById("search").addEventListener("input",render);
-
 render();
+
 </script>
 </body>
 </html>
